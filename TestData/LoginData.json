@@ -1,0 +1,12 @@
+[
+    {
+        "userName": "rrm21@gmail.com",
+        "password": "password",
+        "name": "Login with Valid credential"
+    },
+    {
+        "userName": "rrm221@gmail.com",
+        "password": "password",
+        "name": "Login with Invalid credential"
+    }
+]

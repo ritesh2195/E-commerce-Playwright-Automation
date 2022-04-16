@@ -30,12 +30,16 @@ class LoginPage{
 
         loginUserDetails.userName = await this.userName.textContent()
 
-        loginUserDetails.pageTitle = await this.page.title()
-
         loginUserDetails.signOutLinkVisible =  this.signOutLink.first()
 
         return loginUserDetails
 
+    }
+
+    async validatePageTitle(){
+
+        return await this.page.title()
+        
     }
 }
 

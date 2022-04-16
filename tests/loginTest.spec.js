@@ -1,31 +1,45 @@
 const {test, expect} = require('@playwright/test')
-const {HomePage} = require('../PageObject/HomePage')
-const {LoginPage} = require('../PageObject/LoginPage')
+const { PageManager } = require('../PageObject/PageManager')
+const dataSet = JSON.parse(JSON.stringify(require('../TestData/LoginData.json')))
 
-test('Login Test', async({browser})=>{
+for(const data of dataSet){
+test(`${data.name}`, async({browser})=>{
 
     const context = await browser.newContext()
 
     const page = await context.newPage()
 
-    const hp = new HomePage(page)
+    const pm = new PageManager(page)
+
+    const hp = pm.getHomePage()
 
     await hp.launchURL()
 
     await hp.navigateToLogin()
 
-    const lp = new LoginPage(page)
+    const lp = pm.getLoginPage()
 
-    await lp.doLogin('rrm21@gmail.com', 'password')
+    await lp.doLogin(data.userName, data.password)
+
+    if(data.name==='Login with Valid credential'){
 
     const loginDetails = await lp.validateLogin()
 
-    const {userName, pageTitle, signOutLinkVisible} = loginDetails;
+    const {userName, signOutLinkVisible} = loginDetails;
 
-    expect(pageTitle).toEqual('My account - My Store')
+    expect(await lp.validatePageTitle()).toEqual('My account - My Store')
 
     expect(userName).toEqual('abc def')
 
-    signOutLinkVisible.isVisible()
+    await signOutLinkVisible.isVisible()
+
+}   
+
+    else if(data.name==='Login with Invalid credential'){
+
+        expect(await lp.validatePageTitle()).toEqual('Login - My Store')
+
+    }
 
 })
+}
