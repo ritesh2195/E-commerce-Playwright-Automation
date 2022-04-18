@@ -25,8 +25,16 @@ test('Search product Test', async({page})=>{
 
     await searchPage.chooseProduct('Printed Summer Dress')
 
-    
+    const productDetailsPage = pageManager.getProductDetailsPage()
 
-    
+    await productDetailsPage.chooseProductType("2", 0)
+
+    const ProductDetails = await productDetailsPage.verifySelectedProductDetails()
+
+    const {successTextMessage} = ProductDetails;
+
+    console.log(successTextMessage)
+
+    expect(successTextMessage).toContain('Product successfully added to your shopping cart')
 
 })

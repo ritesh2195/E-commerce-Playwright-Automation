@@ -33,6 +33,11 @@ class PageManager{
         return this.searchPage;
     }
 
+    getProductDetailsPage(){
+
+        return this.productDetailsPage;
+    }
+
 }
 
 module.exports = {PageManager}

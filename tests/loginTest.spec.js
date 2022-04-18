@@ -40,6 +40,5 @@ test(`${data.name}`, async({browser})=>{
         expect(await lp.validatePageTitle()).toEqual('Login - My Store')
 
     }
-
 })
 }

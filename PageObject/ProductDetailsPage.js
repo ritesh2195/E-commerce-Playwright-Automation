@@ -8,7 +8,7 @@ class ProductDetailsPage{
 
         this.productQuantity = this.page.locator('#quantity_wanted')
 
-        this.productColor = this.page.locator('#color_7')
+        this.productColor = this.page.locator("[title='Orange']")
 
         this.addToCartButton = this.page.locator('"Add to cart"')
 
@@ -19,11 +19,22 @@ class ProductDetailsPage{
 
     async chooseProductType(quantity, size){
 
-        this.productQuantity.fill(quantity)
+        await this.productQuantity.fill(quantity)
 
-        this.productSize.selectOption({value: size})
+        await this.productSize.selectOption({index: size})
 
-        this.productColor.click()
+        await this.productColor.click()
+
+        await this.addToCartButton.click()
+    }
+
+    async verifySelectedProductDetails(){
+
+        const selectedProductDetails = {}
+
+        selectedProductDetails.successTextMessage = await  this.productAddedSuccessText.textContent()
+
+        return selectedProductDetails;
     }
 
 }
