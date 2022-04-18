@@ -25,8 +25,8 @@ test('Search product Test', async({page})=>{
 
     await searchPage.chooseProduct('Printed Summer Dress')
 
-    await page.click('Add to cart')
+    
 
-    //await page.pause()
+    
 
 })

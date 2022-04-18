@@ -1,5 +1,6 @@
 const { HomePage } = require("./HomePage")
 const { LoginPage } = require("./LoginPage")
+const { ProductDetailsPage } = require("./ProductDetailsPage")
 const { SearchPage } = require("./SearchPage")
 
 class PageManager{
@@ -13,6 +14,8 @@ class PageManager{
         this.homePage = new HomePage(page)
 
         this.searchPage = new SearchPage(page)
+
+        this.productDetailsPage = new ProductDetailsPage(page)
     }
 
     getHomePage(){
