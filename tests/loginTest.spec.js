@@ -3,41 +3,39 @@ const { PageManager } = require('../PageObject/PageManager')
 const dataSet = JSON.parse(JSON.stringify(require('../TestData/LoginData.json')))
 
 for(const data of dataSet){
-test(`${data.name}`, async({browser})=>{
+test(`${data.name}`, async({page})=>{
 
-    const context = await browser.newContext()
+    const pageManager = new PageManager(page)
 
-    const page = await context.newPage()
+    const homePage = pageManager.getHomePage()
 
-    const pm = new PageManager(page)
+    await homePage.launchURL()
 
-    const hp = pm.getHomePage()
+    await homePage.navigateToLogin()
 
-    await hp.launchURL()
+    const loginPage = pageManager.getLoginPage()
 
-    await hp.navigateToLogin()
-
-    const lp = pm.getLoginPage()
-
-    await lp.doLogin(data.userName, data.password)
+    await loginPage.doLogin(data.userName, data.password)
 
     if(data.name==='Login with Valid credential'){
 
-    const loginDetails = await lp.validateLogin()
+    const loginDetails = await loginPage.validateLogin()
 
     const {userName, signOutLinkVisible} = loginDetails;
 
-    expect(await lp.validatePageTitle()).toEqual('My account - My Store')
+    expect(await loginPage.validatePageTitle()).toEqual('My account - My Store')
 
     expect(userName).toEqual('abc def')
 
     await signOutLinkVisible.isVisible()
 
+    const a= 'ritesh'
+
 }   
 
     else if(data.name==='Login with Invalid credential'){
 
-        expect(await lp.validatePageTitle()).toEqual('Login - My Store')
+        expect(await loginPage.validatePageTitle()).toEqual('Login - My Store')
 
     }
 })

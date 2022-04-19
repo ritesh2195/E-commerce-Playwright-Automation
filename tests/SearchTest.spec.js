@@ -3,15 +3,11 @@ const { PageManager } = require('../PageObject/PageManager')
 
 test('Search product Test', async({page})=>{
 
-    //page.locator('').textContent()
-
     const pageManager = new PageManager(page)
 
     const homePage = pageManager.getHomePage()
 
     await homePage.launchURL()
-
-    //await page.waitForNavigation()
 
     await homePage.navigateToLogin()
 
@@ -27,14 +23,22 @@ test('Search product Test', async({page})=>{
 
     const productDetailsPage = pageManager.getProductDetailsPage()
 
-    await productDetailsPage.chooseProductType("2", 0)
+    const priceDetails = await productDetailsPage.chooseProductType("2", 'S')
 
     const ProductDetails = await productDetailsPage.verifySelectedProductDetails()
 
     const {successTextMessage} = ProductDetails;
 
-    console.log(successTextMessage)
-
     expect(successTextMessage).toContain('Product successfully added to your shopping cart')
+
+    await productDetailsPage.navigateToCartPage()
+
+    const cartPage = pageManager.getCartPage()
+
+    const cartDetails = await cartPage.verifyProductInCart()
+
+    const {totalProductPriceInCartPage} = cartDetails;
+
+    expect(2*priceDetails).toEqual(totalProductPriceInCartPage)
 
 })

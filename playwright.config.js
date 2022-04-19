@@ -8,7 +8,7 @@ const config = {
   timeout: 50 * 1000,
   expect: {
     
-    timeout: 5000
+    timeout: 8000
   },
   
   

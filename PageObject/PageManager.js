@@ -1,3 +1,4 @@
+const { CartPage } = require("./CartPage")
 const { HomePage } = require("./HomePage")
 const { LoginPage } = require("./LoginPage")
 const { ProductDetailsPage } = require("./ProductDetailsPage")
@@ -16,6 +17,8 @@ class PageManager{
         this.searchPage = new SearchPage(page)
 
         this.productDetailsPage = new ProductDetailsPage(page)
+
+        this.cartPage = new CartPage(page)
     }
 
     getHomePage(){
@@ -36,6 +39,11 @@ class PageManager{
     getProductDetailsPage(){
 
         return this.productDetailsPage;
+    }
+
+    getCartPage(){
+
+        return this.cartPage;
     }
 
 }
