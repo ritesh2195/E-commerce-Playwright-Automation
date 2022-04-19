@@ -29,8 +29,6 @@ test(`${data.name}`, async({page})=>{
 
     await signOutLinkVisible.isVisible()
 
-    const a= 'ritesh'
-
 }   
 
     else if(data.name==='Login with Invalid credential'){
