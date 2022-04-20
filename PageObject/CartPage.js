@@ -9,6 +9,8 @@ class CartPage{
         this.productName = this.page.locator('.cart_description .product-name a')
 
         this.productColorSize = this.page.locator('.cart_description small a')
+
+        this.proceedToCheckoutButton = this.page.locator("[title='Proceed to checkout']:nth-child(1)")
     }
 
     async verifyProductInCart(){
@@ -27,6 +29,11 @@ class CartPage{
 
         return productCart;
 
+    }
+
+    async navigateToAddressPage(){
+
+        await this.proceedToCheckoutButton.click()
     }
 
 }

@@ -1,5 +1,6 @@
 const {test, expect} = require('@playwright/test')
 const { PageManager } = require('../PageObject/PageManager')
+const data = JSON.parse(JSON.stringify(require('../TestData/SearchProductData.json')))
 
 test('Search product Test', async({page})=>{
 
@@ -13,32 +14,36 @@ test('Search product Test', async({page})=>{
 
     const loginPage = pageManager.getLoginPage()
 
-    await loginPage.doLogin('rrm21@gmail.com', 'password')
+    await loginPage.doLogin(data.email, data.password)
 
     const searchPage = pageManager.getSearchPage()
 
-    await searchPage.searchProduct('dress')
+    await searchPage.searchProduct(data.searchProduct)
 
-    await searchPage.chooseProduct('Printed Summer Dress')
+    await searchPage.chooseProduct(data.selectProduct)
 
     const productDetailsPage = pageManager.getProductDetailsPage()
 
-    const priceDetails = await productDetailsPage.chooseProductType("2", 'S')
+    const priceDetails = await productDetailsPage.chooseProductType((data.quantity).toString(), data.size)
 
     const ProductDetails = await productDetailsPage.verifySelectedProductDetails()
 
     const {successTextMessage} = ProductDetails;
 
-    expect(successTextMessage).toContain('Product successfully added to your shopping cart')
+    expect(successTextMessage).toContain(data.successText)
 
     await productDetailsPage.navigateToCartPage()
 
     const cartPage = pageManager.getCartPage()
 
-    const cartDetails = await cartPage.verifyProductInCart()
+    const {totalProductPriceInCartPage, productNameInCart, productColorSizeCart} = await cartPage.verifyProductInCart()
 
-    const {totalProductPriceInCartPage} = cartDetails;
+    expect(data.quantity*priceDetails).toEqual(totalProductPriceInCartPage)
 
-    expect(2*priceDetails).toEqual(totalProductPriceInCartPage)
+    expect(productNameInCart).toEqual(data.selectProduct)
+
+    expect(productColorSizeCart).toContain(data.size)
+
+    cartPage.navigateToAddressPage()
 
 })
