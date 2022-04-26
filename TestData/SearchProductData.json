@@ -6,5 +6,8 @@
     "selectProduct":"Printed Summer Dress",
     "quantity":2,
     "size":"S",
-    "successText":"Product successfully added to your shopping cart"
+    "successText":"Product successfully added to your shopping cart",
+    "TermCondition":"I agree to the terms of service and will adhere to them unconditionally.",
+    "paymentMethod": "Bank Wire",
+    "confirmOrderMessage":"Your order on My Store is complete."
 }

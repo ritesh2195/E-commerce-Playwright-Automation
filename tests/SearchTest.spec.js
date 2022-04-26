@@ -44,6 +44,26 @@ test('Search product Test', async({page})=>{
 
     expect(productColorSizeCart).toContain(data.size)
 
-    cartPage.navigateToAddressPage()
+    await cartPage.navigateToAddressPage()
+
+    const addressPage = pageManager.getAddressPage()
+
+    await addressPage.navigateToShippingPage()
+
+    const shippingPage = pageManager.getShippingPage()
+
+    //const termCondition = await shippingPage.verifyTermCondition()
+
+    //expect(termCondition).toEqual(data.TermCondition)
+
+    await shippingPage.navigateToPaymentPage()
+
+    const paymentPage = pageManager.getPaymentPage()
+
+    await paymentPage.makePayment(data.paymentMethod)
+
+    const {confirmOrderText} = await paymentPage.verifyOrderConfirmation()
+
+    expect(confirmOrderText).toEqual(data.confirmOrderMessage)
 
 })
