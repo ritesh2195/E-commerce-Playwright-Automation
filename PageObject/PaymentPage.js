@@ -30,7 +30,7 @@ class PaymentPage{
 
     async verifyOrderConfirmation(){
 
-        orderDetails = {}
+        const orderDetails = {}
 
         orderDetails.confirmOrderText = await this.confirmOrderText.textContent()
 

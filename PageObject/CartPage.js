@@ -15,7 +15,7 @@ class CartPage{
 
     async verifyProductInCart(){
 
-        this.page.mouse.move(0,200)
+        await this.page.mouse.move(0,200)
 
         const productCart = {}
 

@@ -11,18 +11,11 @@ class ShippingPage{
         this.proceedToCheckOutButton = this.page.locator("[name='processCarrier']")
     }
 
-    async verifyTermCondition(){
-
-        const text = await this.page.termConditionText.textContent()
-
-        return text;
-    }
-
     async navigateToPaymentPage(){
 
-        this.termConditionCheckBox.click()
+        await this.termConditionCheckBox.click()
 
-        this.proceedToCheckOutButton.click()
+        await this.proceedToCheckOutButton.click()
     }
 }
 

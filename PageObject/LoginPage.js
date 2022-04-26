@@ -30,7 +30,7 @@ class LoginPage{
 
         loginUserDetails.userName = await this.userName.textContent()
 
-        loginUserDetails.signOutLinkVisible =  this.signOutLink.first()
+        loginUserDetails.signOutLinkVisible = await this.signOutLink.first()
 
         return loginUserDetails
 

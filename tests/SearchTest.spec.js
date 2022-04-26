@@ -52,10 +52,6 @@ test('Search product Test', async({page})=>{
 
     const shippingPage = pageManager.getShippingPage()
 
-    //const termCondition = await shippingPage.verifyTermCondition()
-
-    //expect(termCondition).toEqual(data.TermCondition)
-
     await shippingPage.navigateToPaymentPage()
 
     const paymentPage = pageManager.getPaymentPage()
