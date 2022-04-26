@@ -32,7 +32,7 @@ const config = {
 
         browserName : 'chromium',
         headless : false,
-        screenshot : 'on',
+        screenshot : 'only-on-failure',
         video: 'retain-on-failure',
         ignoreHttpsErrors:true,
         permissions:['geolocation'],
