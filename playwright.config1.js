@@ -5,8 +5,6 @@ const config = {
   testDir: './tests',
   retries :1,
   workers: 3,
-  /* Maximum time one test can run for. */
-  //10-
   timeout: 30 * 1000,
   expect: {
   
@@ -22,7 +20,7 @@ const config = {
         browserName : 'firefox',
         headless : false,
         screenshot : 'off',
-        trace : 'on',//off,on     
+        trace : 'on',
       }
 
     },

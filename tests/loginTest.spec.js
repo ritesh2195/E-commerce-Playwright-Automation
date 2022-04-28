@@ -3,7 +3,7 @@ const { PageManager } = require('../PageObject/PageManager')
 const dataSet = JSON.parse(JSON.stringify(require('../TestData/LoginData.json')))
 
 for(const data of dataSet){
-test(`${data.name}`, async({page})=>{
+test(`${data.testName}`, async({page})=>{
 
     const pageManager = new PageManager(page)
 
@@ -15,7 +15,7 @@ test(`${data.name}`, async({page})=>{
 
     const loginPage = pageManager.getLoginPage()
 
-    await loginPage.doLogin(data.userName, data.password)
+    await loginPage.doLogin(data.email, data.password)
 
     if(data.name==='Login with Valid credential'){
 
@@ -23,9 +23,9 @@ test(`${data.name}`, async({page})=>{
 
     const {userName, signOutLinkVisible} = loginDetails;
 
-    expect(await loginPage.validatePageTitle()).toEqual('My account - My Store')
+    expect(await loginPage.validatePageTitle()).toEqual(data.tabHeader)
 
-    expect(userName).toEqual('abc def')
+    expect(userName).toEqual(data.userName)
 
     await signOutLinkVisible.isVisible()
 
@@ -33,7 +33,7 @@ test(`${data.name}`, async({page})=>{
 
     else if(data.name==='Login with Invalid credential'){
 
-        expect(await loginPage.validatePageTitle()).toEqual('Login - My Store')
+        expect(await loginPage.validatePageTitle()).toEqual(data.tabHeader)
 
     }
 })

@@ -11,6 +11,8 @@ class PaymentPage{
         this.confirmOrderButton = this.page.locator('"I confirm my order"')
 
         this.confirmOrderText = this.page.locator('.cheque-indent strong')
+
+        this.orderInfo = this.page.locator('.box')
     }
 
     async makePayment(method){
@@ -33,6 +35,8 @@ class PaymentPage{
         const orderDetails = {}
 
         orderDetails.confirmOrderText = await this.confirmOrderText.textContent()
+
+        orderDetails.orderInfoText = await this.orderInfo.textContent()
 
         return orderDetails;
     }

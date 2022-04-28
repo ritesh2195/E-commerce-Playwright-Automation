@@ -58,7 +58,7 @@ test('Search product Test', async({page})=>{
 
     await paymentPage.makePayment(data.paymentMethod)
 
-    const {confirmOrderText} = await paymentPage.verifyOrderConfirmation()
+    const {confirmOrderText, orderInfoText} = await paymentPage.verifyOrderConfirmation()
 
     expect(confirmOrderText).toEqual(data.confirmOrderMessage)
 

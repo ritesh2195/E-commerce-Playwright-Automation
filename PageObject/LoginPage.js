@@ -41,6 +41,12 @@ class LoginPage{
         return await this.page.title()
         
     }
+
+    async navigateToAccountPage(){
+
+        await this.userName.click()
+
+    }
 }
 
 module.exports = {LoginPage}

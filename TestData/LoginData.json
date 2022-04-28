@@ -1,12 +1,15 @@
 [
     {
-        "userName": "rrm21@gmail.com",
+        "email": "rrm21@gmail.com",
+        "userName":"abc def",
         "password": "password",
-        "name": "Login with Valid credential"
+        "testName": "Login with Valid credential",
+        "tabHeader":"My account - My Store"
     },
     {
-        "userName": "rrm221@gmail.com",
+        "email": "rrm221@gmail.com",
         "password": "password",
-        "name": "Login with Invalid credential"
+        "testName": "Login with Invalid credential",
+        "tabHeader":"Login - My Store"
     }
 ]
