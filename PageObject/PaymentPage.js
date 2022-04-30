@@ -27,6 +27,8 @@ class PaymentPage{
             await this.payByCheck.click()
         }
 
+        this.page.waitForNavigation()
+
         await this.confirmOrderButton.click()
     }
 

@@ -61,5 +61,4 @@ test('Search product Test', async({page})=>{
     const {confirmOrderText, orderInfoText} = await paymentPage.verifyOrderConfirmation()
 
     expect(confirmOrderText).toEqual(data.confirmOrderMessage)
-
 })

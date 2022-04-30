@@ -1,7 +1,9 @@
+const { AccountPage } = require("./AccountPage")
 const { AddressPage } = require("./AddressPage")
 const { CartPage } = require("./CartPage")
 const { HomePage } = require("./HomePage")
 const { LoginPage } = require("./LoginPage")
+const { OrderHistory } = require("./OrderHistoryPage")
 const { PaymentPage } = require("./PaymentPage")
 const { ProductDetailsPage } = require("./ProductDetailsPage")
 const { SearchPage } = require("./SearchPage")
@@ -28,6 +30,10 @@ class PageManager{
         this.shippingPage = new ShippingPage(page)
 
         this.paymentPage = new PaymentPage(page)
+
+        this.accountPage = new AccountPage(page)
+
+        this.orderHistoryPage = new OrderHistory(page)
     }
 
     getHomePage(){
@@ -68,6 +74,16 @@ class PageManager{
     getPaymentPage(){
 
         return this.paymentPage;
+    }
+
+    getAccountPage(){
+
+        return this.accountPage;
+    }
+
+    getOrderHistoryPage(){
+
+        return this.orderHistoryPage;
     }
 
 }
