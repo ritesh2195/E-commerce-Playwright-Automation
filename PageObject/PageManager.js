@@ -1,6 +1,7 @@
 const { AccountPage } = require("./AccountPage")
 const { AddressPage } = require("./AddressPage")
 const { CartPage } = require("./CartPage")
+const { ContactUsPage } = require("./ContactUsPage")
 const { HomePage } = require("./HomePage")
 const { LoginPage } = require("./LoginPage")
 const { OrderHistory } = require("./OrderHistoryPage")
@@ -34,6 +35,8 @@ class PageManager{
         this.accountPage = new AccountPage(page)
 
         this.orderHistoryPage = new OrderHistory(page)
+
+        this.contactUsPage = new ContactUsPage(page)
     }
 
     getHomePage(){
@@ -84,6 +87,11 @@ class PageManager{
     getOrderHistoryPage(){
 
         return this.orderHistoryPage;
+    }
+
+    getContactUsPage(){
+
+        return this.contactUsPage;
     }
 
 }

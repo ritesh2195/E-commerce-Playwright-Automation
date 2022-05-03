@@ -6,6 +6,8 @@ class HomePage{
 
         this.signinLink = this.page.locator('"Sign in"')
 
+        this.contactUsPageLink = this.page.locator("[title='Contact Us']")
+
     }
 
     async launchURL(){
@@ -16,6 +18,11 @@ class HomePage{
     async navigateToLogin(){
 
         await this.signinLink.click()
+    }
+
+    async navigateToContactUsPage(){
+
+        await this.contactUsPageLink.click()
     }
 }
 
