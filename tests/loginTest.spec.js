@@ -3,7 +3,7 @@ const { PageManager } = require('../PageObject/PageManager')
 const dataSet = JSON.parse(JSON.stringify(require('../TestData/LoginData.json')))
 
 for(const data of dataSet){
-test(`${data.testName}`, async({page})=>{
+test(`@login ${data.testName}`, async({page})=>{
 
     const pageManager = new PageManager(page)
 

@@ -2,7 +2,7 @@ const {test, expect} = require('@playwright/test')
 const { PageManager } = require('../PageObject/PageManager')
 const data = JSON.parse(JSON.stringify(require('../TestData/SearchProductData.json')))
 
-test('Search product Test', async({page})=>{
+test('@search Search product Test', async({page})=>{
 
     const pageManager = new PageManager(page)
 

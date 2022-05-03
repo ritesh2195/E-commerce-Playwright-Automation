@@ -21,7 +21,7 @@ test.beforeEach(async ({page})=>{
 
 })
 
-test('ContactUs Test without Login', async ()=>{
+test('@contact ContactUs Test without Login', async ()=>{
 
     await homePage.navigateToContactUsPage()
 

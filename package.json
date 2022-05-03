@@ -5,7 +5,13 @@
   "main": "index.js",
   "scripts": {
     "web": "npx playwright test",
-    "parallel": "npx playwright test --config playwright.config1.js"
+    "parallel": "npx playwright test --config playwright.config1.js",
+    "firefox":"npx playwright test --config playwright.config1.js --project firefox",
+    "chromium":"npx playwright test --config playwright.config1.js --project chromium",
+    "webkit":"npx playwright test --config playwright.config1.js --project webkit",
+    "login":"npx playwright test --grep '@login'",
+    "contact":"npx playwright test --grep '@contact'",
+    "search":"npx playwright test --grep '@search'"
   },
   "keywords": [],
   "author": "",
