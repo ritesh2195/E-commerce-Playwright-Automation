@@ -40,9 +40,9 @@ class ContactUsPage{
         
         const emailValue = await this.email.getAttribute('value')
 
-        this.orderReference.selectOption({index:1})
+        await this.orderReference.selectOption({index:1})
 
-        this.fileUpload.setInputFiles('upload.txt')
+        await this.fileUpload.setInputFiles('upload.txt')
 
         await this.message.fill(message)
 
