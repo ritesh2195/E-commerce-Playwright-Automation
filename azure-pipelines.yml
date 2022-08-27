@@ -17,6 +17,7 @@ steps:
 
 - script: |
     npm install
+    npx playwright install
   displayName: 'npm install and build'
 - script: |
     npm run web
